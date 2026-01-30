@@ -2,21 +2,33 @@
 
 .Header {
   border-bottom: @retro-border;
-  box-shadow: none;
+  box-shadow: none !important;
+
+  // Remove any Flarum default shadows
+  &::after,
+  &::before {
+    display: none;
+  }
 }
 
 .Header-title {
   font-weight: 700;
 }
 
-// Header navigation buttons
+// Header navigation buttons - flat by default
 .Header-controls {
   .Button {
-    border: @retro-border;
-    box-shadow: @retro-shadow-default;
+    border: none;
+    box-shadow: none;
+    background: transparent;
 
     &:hover {
-      box-shadow: @retro-shadow-hover;
+      background: fade(@primary-color, 15%);
+    }
+
+    &:focus {
+      outline: none;
+      background: fade(@primary-color, 15%);
     }
   }
 
@@ -31,16 +43,17 @@
   }
 }
 
-// Search box
+// Search box - only bottom border by default
 .Search-input {
-  border: @retro-border;
+  border: none;
+  border-bottom: @retro-border-light;
   border-radius: 0;
-  box-shadow: @retro-inset-shadow;
-  transition: box-shadow @retro-transition, border-color @retro-transition;
+  box-shadow: none;
+  transition: border-color @retro-transition;
 
   &:focus {
-    border-color: @primary-color;
-    box-shadow: @retro-inset-shadow-focus;
+    border-bottom-color: @primary-color;
+    box-shadow: none;
     outline: none;
   }
 }

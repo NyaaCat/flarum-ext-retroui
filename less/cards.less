@@ -19,17 +19,37 @@
   }
 }
 
-// Individual posts - static border and shadow
+// Individual posts - NO border/shadow, only separator line between posts
 .Post {
-  border: @retro-border;
+  border: none;
   border-radius: 0;
-  box-shadow: @retro-shadow-default;
-  margin-bottom: 12px;
+  box-shadow: none !important;
+  margin-bottom: 0;
+  padding-bottom: 16px;
+
+  // Separator line between posts
+  &:not(:last-child) {
+    border-bottom: @retro-border-light;
+  }
 }
 
-// Post header
+// Post header - no border
 .Post-header {
-  border-bottom: @retro-border-light;
+  border-bottom: none;
+}
+
+// Post body - remove borders from all child elements
+.Post-body {
+  // Remove borders from emoji, images, and other inline elements
+  img,
+  .emoji,
+  .PostMention,
+  .UserMention,
+  [class*="emoji"],
+  [data-emoji] {
+    border: none !important;
+    box-shadow: none !important;
+  }
 }
 
 // Sidebar navigation
@@ -66,14 +86,21 @@
   }
 }
 
-// Tags (if flarum/tags extension is installed)
+// Tags page - border only, NO shadow
 .TagTile {
   border: @retro-border;
   border-radius: 0;
-  box-shadow: @retro-shadow-default;
+  box-shadow: none;
   transition: box-shadow @retro-transition;
 
   &:hover {
     box-shadow: @retro-shadow-hover;
+  }
+}
+
+// Tags cloud/list
+.TagsPage {
+  .TagTile {
+    box-shadow: none;
   }
 }

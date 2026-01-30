@@ -3,13 +3,24 @@
 .Composer {
   border: @retro-border;
   border-radius: 0;
-  box-shadow: none;
+  box-shadow: none !important;
   background: @control-bg;
 }
 
-// Composer header
+// Composer header - contains minimize/fullscreen/close buttons
 .Composer-header {
   border-bottom: @retro-border-light;
+
+  // Make all header buttons flat (minimize, fullscreen, close)
+  .Button {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent;
+
+    &:hover {
+      background: fade(@primary-color, 15%);
+    }
+  }
 }
 
 // Composer body
@@ -67,13 +78,13 @@
 // Full screen composer
 .Composer--fullScreen {
   border: @retro-border;
-  box-shadow: @retro-shadow-default;
+  box-shadow: none !important;
 }
 
 // Minimized composer
 .Composer--minimized {
   border: @retro-border;
-  box-shadow: @retro-shadow-default;
+  box-shadow: none !important;
 }
 
 // Reply preview
