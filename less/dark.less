@@ -1,0 +1,91 @@
+// Dark Mode Styles
+// Applied when Flarum's @config-dark-mode is enabled
+
+& when (@config-dark-mode) {
+
+  // Adjusted border color for dark mode (use lighter borders)
+  @retro-border-color-dark: fade(@text-color, 60%);
+  @retro-shadow-default-dark: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 20%);
+  @retro-shadow-large-dark: 8px 8px 0 0 fade(@text-color, 40%);
+
+  // Buttons
+  .Button {
+    border-color: @retro-border-color-dark;
+    box-shadow: @retro-shadow-default-dark;
+
+    &:hover {
+      box-shadow: @retro-shadow-hover;  // Keep primary color on hover
+    }
+
+    &.Button--icon {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  // Header
+  .Header {
+    border-bottom-color: @retro-border-color-dark;
+  }
+
+  // Search input
+  .Search-input {
+    border-color: @retro-border-color-dark;
+  }
+
+  // Form controls
+  .FormControl {
+    border-color: @retro-border-color-dark;
+  }
+
+  // Posts
+  .Post {
+    border-color: @retro-border-color-dark;
+    box-shadow: @retro-shadow-default-dark;
+  }
+
+  // Discussion list items
+  .DiscussionListItem {
+    &:hover {
+      border-color: @retro-border-color-dark;
+      box-shadow: @retro-shadow-hover;
+    }
+  }
+
+  // Sidebar
+  .Sidebar .SideNav {
+    border-color: @retro-border-color-dark;
+    box-shadow: @retro-shadow-default-dark;
+  }
+
+  // Dropdowns
+  .Dropdown-menu {
+    border-color: @retro-border-color-dark;
+    box-shadow: @retro-shadow-default-dark;
+  }
+
+  // Modals
+  .Modal {
+    border-color: @retro-border-color-dark;
+    box-shadow: @retro-shadow-large-dark;
+  }
+
+  .Modal-header {
+    border-bottom-color: @retro-border-color-dark;
+  }
+
+  .Modal-footer {
+    border-top-color: @retro-border-color-dark;
+  }
+
+  // Alerts
+  .Alert {
+    border-color: @retro-border-color-dark;
+    box-shadow: @retro-shadow-default-dark;
+  }
+
+  // Composer
+  .Composer {
+    border-color: @retro-border-color-dark;
+  }
+}
