@@ -7,19 +7,22 @@
   transition: box-shadow @retro-transition;
   font-weight: 600;
 
+  // Use CSS variable for dynamic tag color support
+  // --primary-color is set by Flarum on tag pages
   &:hover {
-    box-shadow: @retro-shadow-hover;
+    .retro-shadow-hover-dynamic();
   }
 
   &:focus {
     outline: none;
-    box-shadow: @retro-shadow-hover;
+    .retro-shadow-hover-dynamic();
   }
 
   // Primary button - use dark gray shadow since background is already colored
   &.Button--primary {
-    &:hover {
-      box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%);
+    &:hover,
+    &:focus {
+      box-shadow: @retro-shadow-dark;
     }
   }
 

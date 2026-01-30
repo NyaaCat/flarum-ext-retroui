@@ -32,7 +32,7 @@
   .DiscussionListItem {
     &:hover {
       border-color: @retro-border-color-dark;
-      box-shadow: @retro-shadow-hover;
+      .retro-shadow-hover-dynamic();
     }
   }
 
@@ -176,7 +176,7 @@
       box-shadow: @retro-shadow-default-dark;
 
       &:hover {
-        box-shadow: @retro-shadow-hover;
+        .retro-shadow-hover-dynamic();
       }
     }
   }

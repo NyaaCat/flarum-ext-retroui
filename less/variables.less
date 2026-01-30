@@ -9,9 +9,12 @@
 
 @retro-shadow-offset: 4px;
 @retro-shadow-default: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 35%);
+// Note: @retro-shadow-hover uses static @primary-color
+// For dynamic tag colors, use the mixin .retro-shadow-hover-dynamic() instead
 @retro-shadow-hover: @retro-shadow-offset @retro-shadow-offset 0 0 @primary-color;
 @retro-shadow-secondary: @retro-shadow-offset @retro-shadow-offset 0 0 @secondary-color;
 @retro-shadow-large: 8px 8px 0 0 @text-color;
+@retro-shadow-dark: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%);
 
 @retro-inset-shadow: inset 2px 2px 0 0 fade(@text-color, 10%);
 @retro-inset-shadow-focus: inset 2px 2px 0 0 fade(@primary-color, 20%);
@@ -20,3 +23,10 @@
 
 // === Override Flarum Defaults ===
 @border-radius: 0;
+
+// === Mixin for dynamic hover shadow ===
+// Uses CSS custom property --primary-color if available (set by Flarum on tag pages)
+// Falls back to LESS @primary-color
+.retro-shadow-hover-dynamic() {
+  box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 var(--primary-color, @primary-color);
+}

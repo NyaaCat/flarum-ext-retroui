@@ -63,11 +63,11 @@
   box-shadow: @retro-shadow-default;
 
   &:hover {
-    box-shadow: @retro-shadow-hover;
+    .retro-shadow-hover-dynamic();
   }
 
   &.Button--primary:hover {
-    box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%);
+    box-shadow: @retro-shadow-dark;
   }
 }
 

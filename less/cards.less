@@ -10,7 +10,8 @@
 
   &:hover {
     border-color: @retro-border-color;
-    box-shadow: @retro-shadow-hover;
+    // Use dynamic shadow for tag color support
+    .retro-shadow-hover-dynamic();
   }
 
   // Active/unread discussions
@@ -269,8 +270,8 @@
   transition: box-shadow @retro-transition;
 
   &:hover {
-    // Use @primary-color shadow (which is tag color on tag pages)
-    box-shadow: @retro-shadow-hover;
+    // Use dynamic shadow for tag color support
+    .retro-shadow-hover-dynamic();
   }
 }
 
@@ -294,32 +295,14 @@
 }
 
 // ===========================================
-// Tag-colored elements - use dark gray shadow
+// Hero sections - use dark gray shadow
 // ===========================================
-// For elements that already have a tag/primary colored background,
-// the hover shadow should be dark gray for contrast
+// Hero has a colored background, so use dark shadow for contrast
 
 .Hero,
 .TagHero,
-[class*="Hero"],
-.Button--primary,
-.Button.primary {
-  // Elements with colored backgrounds get dark gray shadow
+[class*="Hero"] {
   &:hover {
-    box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%) !important;
-  }
-}
-
-// Tag page specific: elements with tag background color
-.TagsPage,
-.TagPage,
-[class*="Tag"][class*="Page"] {
-  // Primary/colored buttons on tag pages use dark shadow
-  .Button--primary,
-  .Button.primary,
-  .Button[style*="background"] {
-    &:hover {
-      box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%) !important;
-    }
+    box-shadow: @retro-shadow-dark;
   }
 }
