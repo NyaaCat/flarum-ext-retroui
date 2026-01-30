@@ -1,0 +1,54 @@
+// Header / Navigation Styles
+
+.Header {
+  border-bottom: @retro-border;
+  box-shadow: none;
+}
+
+.Header-title {
+  font-weight: 700;
+}
+
+// Header navigation buttons
+.Header-controls {
+  .Button {
+    border: @retro-border;
+    box-shadow: @retro-shadow-default;
+
+    &:hover {
+      box-shadow: @retro-shadow-hover;
+    }
+  }
+
+  .Button--icon {
+    border: none;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+      background: fade(@primary-color, 15%);
+    }
+  }
+}
+
+// Search box
+.Search-input {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-inset-shadow;
+  transition: box-shadow @retro-transition, border-color @retro-transition;
+
+  &:focus {
+    border-color: @primary-color;
+    box-shadow: @retro-inset-shadow-focus;
+    outline: none;
+  }
+}
+
+// Search results dropdown
+.Search-results {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-shadow-default;
+  margin-top: 4px;
+}
