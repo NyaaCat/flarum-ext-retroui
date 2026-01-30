@@ -1,0 +1,82 @@
+// Composer (Post Editor) Styles
+
+.Composer {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: none;
+  background: @control-bg;
+}
+
+// Composer header
+.Composer-header {
+  border-bottom: @retro-border-light;
+}
+
+// Composer body
+.Composer-body {
+  .TextEditor {
+    // Text editor container
+  }
+
+  .TextEditor-editor {
+    border: @retro-border-light;
+    border-radius: 0;
+    box-shadow: none;
+
+    &:focus {
+      border-color: @primary-color;
+      outline: none;
+    }
+  }
+}
+
+// Text editor toolbar
+.TextEditor-toolbar {
+  border-bottom: @retro-border-light;
+
+  .Button {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+
+    &:hover {
+      background: fade(@primary-color, 15%);
+      box-shadow: none;
+    }
+  }
+}
+
+// Composer controls (submit button area)
+.Composer-controls {
+  .Button {
+    border: @retro-border;
+    box-shadow: @retro-shadow-default;
+
+    &:hover {
+      box-shadow: @retro-shadow-hover;
+    }
+
+    &.Button--primary {
+      &:hover {
+        box-shadow: @retro-shadow-secondary;
+      }
+    }
+  }
+}
+
+// Full screen composer
+.Composer--fullScreen {
+  border: @retro-border;
+  box-shadow: @retro-shadow-default;
+}
+
+// Minimized composer
+.Composer--minimized {
+  border: @retro-border;
+  box-shadow: @retro-shadow-default;
+}
+
+// Reply preview
+.ComposerBody-preview {
+  border: @retro-border-light;
+}
