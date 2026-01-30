@@ -1,5 +1,5 @@
 {
-    "name": "phoenixlzx/flarum-ext-retroui",
+    "name": "nyaacat/flarum-ext-retroui",
     "description": "NeoBrutalism (RetroUI) theme for Flarum",
     "keywords": ["flarum", "theme", "retroui", "neobrutalism"],
     "type": "flarum-extension",
@@ -9,13 +9,17 @@
     },
     "authors": [
         {
-            "name": "phoenixlzx",
-            "role": "Developer"
+            "name": "NyaaCat",
+            "homepage": "https://github.com/NyaaCat"
         }
     ],
+    "support": {
+        "issues": "https://github.com/NyaaCat/flarum-ext-retroui/issues",
+        "source": "https://github.com/NyaaCat/flarum-ext-retroui"
+    },
     "autoload": {
         "psr-4": {
-            "Phoenixlzx\\RetroUI\\": "src/"
+            "NyaaCat\\RetroUI\\": "src/"
         }
     },
     "extra": {

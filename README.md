@@ -13,7 +13,7 @@ A NeoBrutalism-styled theme for Flarum forums.
 ## Installation
 
 ```bash
-composer require phoenixlzx/flarum-ext-retroui
+composer require nyaacat/flarum-ext-retroui
 ```
 
 Then enable the extension in your Flarum admin panel.
@@ -23,6 +23,11 @@ Then enable the extension in your Flarum admin panel.
 The theme uses your Flarum admin panel color settings:
 - **Primary Color**: Used for hover shadow effects
 - **Secondary Color**: Used for primary button hover shadows
+
+## Links
+
+- [GitHub](https://github.com/NyaaCat/flarum-ext-retroui)
+- [Packagist](https://packagist.org/packages/nyaacat/flarum-ext-retroui)
 
 ## License
 
