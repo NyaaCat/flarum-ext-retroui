@@ -77,4 +77,51 @@
   .TagTile {
     border-color: @retro-border-color-dark;
   }
+
+  // ===========================================
+  // Toggle / Switch - Dark Mode
+  // ===========================================
+
+  // Checkbox
+  .Checkbox {
+    .Checkbox-display {
+      border-color: @retro-border-color-dark;
+    }
+  }
+
+  // Switch
+  .Switch,
+  .Checkbox--switch {
+    .Switch-display,
+    .Checkbox-display {
+      border-color: @retro-border-color-dark;
+
+      &::after {
+        border-color: @retro-border-color-dark;
+      }
+    }
+  }
+
+  // Toggle Group
+  .ToggleGroup,
+  .ButtonGroup--toggle {
+    border-color: @retro-border-color-dark;
+
+    .Button,
+    .ToggleGroup-button {
+      &:not(:last-child) {
+        border-right-color: @retro-border-color-dark;
+      }
+    }
+  }
+
+  // Toggle button
+  .Toggle {
+    border-color: @retro-border-color-dark;
+  }
+
+  // Radio
+  .RadioGroup .Radio .Radio-display {
+    border-color: @retro-border-color-dark;
+  }
 }
