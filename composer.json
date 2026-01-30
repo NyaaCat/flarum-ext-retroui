@@ -1,0 +1,27 @@
+{
+    "name": "phoenixlzx/flarum-ext-retroui",
+    "description": "NeoBrutalism (RetroUI) theme for Flarum",
+    "keywords": ["flarum", "theme", "retroui", "neobrutalism"],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8.0"
+    },
+    "authors": [
+        {
+            "name": "phoenixlzx",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Phoenixlzx\\RetroUI\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "RetroUI Theme",
+            "category": "theme"
+        }
+    }
+}
