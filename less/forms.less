@@ -1,0 +1,48 @@
+// Form Input Styles
+
+.FormControl {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-inset-shadow;
+  transition: box-shadow @retro-transition, border-color @retro-transition;
+
+  &:focus {
+    border-color: @primary-color;
+    box-shadow: @retro-inset-shadow-focus;
+    outline: none;
+  }
+
+  &.has-error,
+  &:invalid {
+    border-color: @error-color;
+    box-shadow: inset 2px 2px 0 0 fade(@error-color, 20%);
+  }
+}
+
+// Textarea
+textarea.FormControl {
+  resize: vertical;
+}
+
+// Select dropdown (trigger button style)
+.Select {
+  .Select-input {
+    border: @retro-border;
+    border-radius: 0;
+    box-shadow: @retro-shadow-default;
+    transition: box-shadow @retro-transition;
+
+    &:hover {
+      box-shadow: @retro-shadow-hover;
+    }
+  }
+}
+
+// Checkbox and radio
+.Checkbox {
+  input[type="checkbox"],
+  input[type="radio"] {
+    border: @retro-border;
+    border-radius: 0;
+  }
+}
