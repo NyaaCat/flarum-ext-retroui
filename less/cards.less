@@ -1,0 +1,79 @@
+// Card and Discussion List Styles
+
+// Discussion list items - clean by default, show on hover
+.DiscussionListItem {
+  border: @retro-border-width solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  transition: border-color @retro-transition, box-shadow @retro-transition;
+  margin-bottom: 4px;
+
+  &:hover {
+    border-color: @retro-border-color;
+    box-shadow: @retro-shadow-hover;
+  }
+
+  // Active/unread discussions
+  &.active {
+    background: fade(@primary-color, 8%);
+  }
+}
+
+// Individual posts - static border and shadow
+.Post {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-shadow-default;
+  margin-bottom: 12px;
+}
+
+// Post header
+.Post-header {
+  border-bottom: @retro-border-light;
+}
+
+// Sidebar navigation
+.Sidebar {
+  .SideNav {
+    border: @retro-border;
+    border-radius: 0;
+    box-shadow: @retro-shadow-default;
+  }
+
+  .SideNav-item {
+    border-bottom: @retro-border-light;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: fade(@primary-color, 10%);
+    }
+
+    &.active {
+      background: fade(@primary-color, 15%);
+      font-weight: 600;
+    }
+  }
+}
+
+// Index page sidebar
+.IndexPage-nav {
+  .SideNav {
+    border: @retro-border;
+    box-shadow: @retro-shadow-default;
+  }
+}
+
+// Tags (if flarum/tags extension is installed)
+.TagTile {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-shadow-default;
+  transition: box-shadow @retro-transition;
+
+  &:hover {
+    box-shadow: @retro-shadow-hover;
+  }
+}
