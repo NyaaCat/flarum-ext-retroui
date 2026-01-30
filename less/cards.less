@@ -52,41 +52,174 @@
   }
 }
 
-// Sidebar navigation
+// ===========================================
+// Sidebar Navigation - TOC Style (No Border)
+// ===========================================
+
 .Sidebar {
+  // Remove border and shadow from container
   .SideNav {
-    border: @retro-border;
+    border: none;
     border-radius: 0;
-    box-shadow: @retro-shadow-default;
+    box-shadow: none;
+    background: transparent;
   }
 
+  // Navigation items - TOC style with left border indicator
   .SideNav-item {
-    border-bottom: @retro-border-light;
-
-    &:last-child {
-      border-bottom: none;
-    }
+    display: block;
+    padding: 8px 12px;
+    padding-left: 14px;
+    margin-bottom: 2px;
+    border: none;
+    border-left: 2px solid transparent;
+    background: transparent;
+    transition: border-color @retro-transition, background @retro-transition, color @retro-transition;
+    font-size: 14px;
 
     &:hover {
-      background: fade(@primary-color, 10%);
+      border-left-color: fade(@text-color, 40%);
+      background: fade(@primary-color, 5%);
     }
 
     &.active {
-      background: fade(@primary-color, 15%);
+      border-left-color: @primary-color;
+      background: fade(@primary-color, 10%);
+      font-weight: 600;
+    }
+
+    // Remove bottom border between items
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// ===========================================
+// Tags Navigation - TOC Style with Depth
+// ===========================================
+
+.IndexPage-nav,
+.TagsPage-nav {
+  .SideNav {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  // Tag links as TOC items
+  .TagLinkButton,
+  .SideNav-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    padding-left: 14px;
+    margin-bottom: 1px;
+    border: none;
+    border-left: 2px solid transparent;
+    background: transparent;
+    transition: border-color @retro-transition, background @retro-transition;
+    font-size: 14px;
+    text-decoration: none;
+
+    &:hover {
+      border-left-color: fade(@text-color, 40%);
+      background: fade(@primary-color, 5%);
+    }
+
+    &.active {
+      border-left-color: @primary-color;
+      background: fade(@primary-color, 10%);
+      font-weight: 600;
+    }
+
+    // Tag icon/color dot
+    .TagIcon,
+    .icon {
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+
+    // Tag label
+    .TagLabel {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // Nested tags - increase indentation for depth
+  .Sublist,
+  .TagLinkButton-children,
+  .SideNav-children {
+    margin-left: 0;
+    padding-left: 0;
+
+    .TagLinkButton,
+    .SideNav-item {
+      padding-left: 28px;  // Level 2 indentation
+
+      // Even deeper nesting
+      .Sublist &,
+      .TagLinkButton-children &,
+      .SideNav-children & {
+        padding-left: 42px;  // Level 3 indentation
+      }
+    }
+  }
+
+  // Alternative: depth via data attribute or class
+  .TagLinkButton[data-depth="1"],
+  .SideNav-item.depth-1 {
+    padding-left: 28px;
+  }
+
+  .TagLinkButton[data-depth="2"],
+  .SideNav-item.depth-2 {
+    padding-left: 42px;
+  }
+
+  .TagLinkButton[data-depth="3"],
+  .SideNav-item.depth-3 {
+    padding-left: 56px;
+  }
+
+  // "All Discussions" link
+  .SideNav-item:first-child {
+    font-weight: 500;
+  }
+}
+
+// Tags list in sidebar
+.TagList {
+  border: none;
+  box-shadow: none;
+
+  .TagListItem {
+    padding: 6px 12px;
+    padding-left: 14px;
+    border: none;
+    border-left: 2px solid transparent;
+    transition: border-color @retro-transition, background @retro-transition;
+
+    &:hover {
+      border-left-color: fade(@text-color, 40%);
+      background: fade(@primary-color, 5%);
+    }
+
+    &.active {
+      border-left-color: @primary-color;
+      background: fade(@primary-color, 10%);
       font-weight: 600;
     }
   }
 }
 
-// Index page sidebar
-.IndexPage-nav {
-  .SideNav {
-    border: @retro-border;
-    box-shadow: @retro-shadow-default;
-  }
-}
+// ===========================================
+// Tags Page - Tiles (border only, no shadow)
+// ===========================================
 
-// Tags page - border only, NO shadow
 .TagTile {
   border: @retro-border;
   border-radius: 0;
@@ -98,9 +231,21 @@
   }
 }
 
-// Tags cloud/list
 .TagsPage {
   .TagTile {
     box-shadow: none;
   }
+}
+
+// ===========================================
+// Tag badges/pills in content
+// ===========================================
+
+.TagLabel,
+.Badge--tag {
+  border: @retro-border;
+  border-radius: 0;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
 }

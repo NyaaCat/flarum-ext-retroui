@@ -36,10 +36,22 @@
     }
   }
 
-  // Sidebar
-  .Sidebar .SideNav {
+  // Sidebar - TOC style (left border indicators)
+  .Sidebar,
+  .IndexPage-nav,
+  .TagsPage-nav {
+    .SideNav-item,
+    .TagLinkButton {
+      &:hover {
+        border-left-color: @retro-border-color-dark;
+      }
+    }
+  }
+
+  // Tag badges
+  .TagLabel,
+  .Badge--tag {
     border-color: @retro-border-color-dark;
-    box-shadow: @retro-shadow-default-dark;
   }
 
   // Dropdowns & Context Menus
