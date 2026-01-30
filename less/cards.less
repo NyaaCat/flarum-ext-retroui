@@ -56,41 +56,67 @@
 // Sidebar Navigation - TOC Style (No Border)
 // ===========================================
 
+// Reset generic nav classes that Flarum might use
+.Nav,
+.nav {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 .Sidebar {
   // Remove border and shadow from container
-  .SideNav {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    background: transparent;
+  .SideNav,
+  .Nav,
+  nav {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   // Navigation items - TOC style with left border indicator
-  .SideNav-item {
-    display: block;
-    padding: 8px 12px;
-    padding-left: 14px;
-    margin-bottom: 2px;
-    border: none;
-    border-left: 2px solid transparent;
-    background: transparent;
-    transition: border-color @retro-transition, background @retro-transition, color @retro-transition;
-    font-size: 14px;
+  // Cover all possible selectors Flarum might use
+  .SideNav-item,
+  .SideNav-link,
+  a.SideNav-item,
+  li > a,
+  .Nav-item,
+  .nav-item {
+    display: block !important;
+    padding: 8px 12px !important;
+    padding-left: 14px !important;
+    margin-bottom: 2px !important;
+    border: none !important;
+    border-left: 2px solid transparent !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: border-color @retro-transition, background @retro-transition, color @retro-transition !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
 
     &:hover {
-      border-left-color: fade(@text-color, 40%);
-      background: fade(@primary-color, 5%);
+      border-left-color: fade(@text-color, 40%) !important;
+      background: fade(@primary-color, 5%) !important;
     }
 
     &.active {
-      border-left-color: @primary-color;
-      background: fade(@primary-color, 10%);
-      font-weight: 600;
+      border-left-color: @primary-color !important;
+      background: fade(@primary-color, 10%) !important;
+      font-weight: 600 !important;
     }
 
     // Remove bottom border between items
     &:last-child {
-      border-bottom: none;
+      border-bottom: none !important;
     }
   }
 }
@@ -101,36 +127,49 @@
 
 .IndexPage-nav,
 .TagsPage-nav {
-  .SideNav {
-    border: none;
-    box-shadow: none;
-    background: transparent;
+  .SideNav,
+  .Nav,
+  nav,
+  ul {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  // Tag links as TOC items
+  // Tag links as TOC items - comprehensive selectors
   .TagLinkButton,
-  .SideNav-item {
-    display: flex;
-    align-items: center;
-    padding: 6px 12px;
-    padding-left: 14px;
-    margin-bottom: 1px;
-    border: none;
-    border-left: 2px solid transparent;
-    background: transparent;
-    transition: border-color @retro-transition, background @retro-transition;
-    font-size: 14px;
-    text-decoration: none;
+  .SideNav-item,
+  .SideNav-link,
+  a.SideNav-item,
+  li > a,
+  .Nav-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 6px 12px !important;
+    padding-left: 14px !important;
+    margin-bottom: 1px !important;
+    border: none !important;
+    border-left: 2px solid transparent !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: border-color @retro-transition, background @retro-transition !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
 
     &:hover {
-      border-left-color: fade(@text-color, 40%);
-      background: fade(@primary-color, 5%);
+      border-left-color: fade(@text-color, 40%) !important;
+      background: fade(@primary-color, 5%) !important;
     }
 
     &.active {
-      border-left-color: @primary-color;
-      background: fade(@primary-color, 10%);
-      font-weight: 600;
+      border-left-color: @primary-color !important;
+      background: fade(@primary-color, 10%) !important;
+      font-weight: 600 !important;
     }
 
     // Tag icon/color dot
@@ -140,12 +179,15 @@
       flex-shrink: 0;
     }
 
-    // Tag label
+    // Tag label - remove border from inline tag labels in nav
     .TagLabel {
       flex: 1;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      border: none !important;
+      padding: 0 !important;
+      background: transparent !important;
     }
   }
 
@@ -227,6 +269,7 @@
   transition: box-shadow @retro-transition;
 
   &:hover {
+    // Use @primary-color shadow (which is tag color on tag pages)
     box-shadow: @retro-shadow-hover;
   }
 }
@@ -248,4 +291,35 @@
   padding: 2px 8px;
   font-size: 12px;
   font-weight: 500;
+}
+
+// ===========================================
+// Tag-colored elements - use dark gray shadow
+// ===========================================
+// For elements that already have a tag/primary colored background,
+// the hover shadow should be dark gray for contrast
+
+.Hero,
+.TagHero,
+[class*="Hero"],
+.Button--primary,
+.Button.primary {
+  // Elements with colored backgrounds get dark gray shadow
+  &:hover {
+    box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%) !important;
+  }
+}
+
+// Tag page specific: elements with tag background color
+.TagsPage,
+.TagPage,
+[class*="Tag"][class*="Page"] {
+  // Primary/colored buttons on tag pages use dark shadow
+  .Button--primary,
+  .Button.primary,
+  .Button[style*="background"] {
+    &:hover {
+      box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%) !important;
+    }
+  }
 }

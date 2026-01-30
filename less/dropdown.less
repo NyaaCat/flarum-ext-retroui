@@ -2,14 +2,19 @@
 // RetroUI Dropdown / Context Menu / Menu
 // ===========================================
 
-// Base dropdown menu container
-.Dropdown-menu {
-  border: @retro-border;
-  border-radius: 0;
-  box-shadow: @retro-shadow-default;
-  background: @control-bg;
+// Base dropdown menu container - comprehensive selectors
+.Dropdown-menu,
+.Popover,
+.Popover-content,
+[class*="Dropdown"] > .menu,
+[class*="dropdown"] > .menu,
+.dropdown-menu {
+  border: @retro-border !important;
+  border-radius: 0 !important;
+  box-shadow: @retro-shadow-default !important;
+  background: @control-bg !important;
   margin-top: 4px;
-  padding: 4px;
+  padding: 4px !important;
   min-width: 160px;
   z-index: @zindex-dropdown;
 
@@ -28,34 +33,38 @@
   }
 }
 
-// Dropdown menu item
-.Dropdown-item {
-  display: flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 0;
-  transition: background @retro-transition, color @retro-transition;
+// Dropdown menu item - comprehensive selectors
+.Dropdown-item,
+.Popover-item,
+.dropdown-item,
+[class*="Dropdown"] .menu-item,
+[class*="dropdown"] .menu-item {
+  display: flex !important;
+  align-items: center !important;
+  padding: 8px 12px !important;
+  border-radius: 0 !important;
+  transition: background @retro-transition, color @retro-transition !important;
   cursor: pointer;
   font-size: 14px;
 
   &:hover {
-    background: @primary-color;
-    color: @text-on-dark;
+    background: @primary-color !important;
+    color: @text-on-dark !important;
   }
 
   &:focus {
-    background: @primary-color;
-    color: @text-on-dark;
-    outline: none;
+    background: @primary-color !important;
+    color: @text-on-dark !important;
+    outline: none !important;
   }
 
   &.active {
-    background: fade(@primary-color, 20%);
-    font-weight: 600;
+    background: fade(@primary-color, 20%) !important;
+    font-weight: 600 !important;
 
     &:hover {
-      background: @primary-color;
-      color: @text-on-dark;
+      background: @primary-color !important;
+      color: @text-on-dark !important;
     }
   }
 
@@ -73,8 +82,8 @@
     color: @error-color;
 
     &:hover {
-      background: @error-color;
-      color: @text-on-dark;
+      background: @error-color !important;
+      color: @text-on-dark !important;
     }
   }
 
@@ -385,5 +394,85 @@
     &:last-child {
       border-bottom: none;
     }
+  }
+}
+
+// ===========================================
+// Search Dropdown / Autocomplete
+// ===========================================
+
+.Search-results,
+.SearchResults,
+[class*="Search"] .results,
+[class*="search"] .results,
+.autocomplete,
+.Autocomplete {
+  border: @retro-border !important;
+  border-radius: 0 !important;
+  box-shadow: @retro-shadow-default !important;
+  background: @control-bg !important;
+  padding: 4px !important;
+  animation: dropdown-appear 0.15s ease-out;
+
+  // Search result items
+  .Search-result,
+  .SearchResult,
+  li,
+  .result-item {
+    padding: 8px 12px !important;
+    border-radius: 0 !important;
+    transition: background @retro-transition, color @retro-transition !important;
+
+    &:hover,
+    &.focused,
+    &.selected {
+      background: @primary-color !important;
+      color: @text-on-dark !important;
+    }
+  }
+}
+
+// ===========================================
+// Popover (User cards, previews, etc.)
+// ===========================================
+
+.Popover,
+.UserCard,
+.PreviewCard,
+[class*="Popover"],
+[class*="popover"] {
+  border: @retro-border !important;
+  border-radius: 0 !important;
+  box-shadow: @retro-shadow-default !important;
+  background: @control-bg !important;
+}
+
+// ===========================================
+// Filter / Sort Dropdowns
+// ===========================================
+
+.FilterDropdown,
+.SortDropdown,
+[class*="Filter"] .Dropdown-menu,
+[class*="Sort"] .Dropdown-menu {
+  border: @retro-border !important;
+  border-radius: 0 !important;
+  box-shadow: @retro-shadow-default !important;
+}
+
+// ===========================================
+// Generic Dropdown Reset
+// ===========================================
+
+// Catch-all for any remaining dropdown-like elements
+[class*="dropdown"],
+[class*="Dropdown"] {
+  .menu,
+  .dropdown-menu,
+  .Dropdown-menu {
+    border: @retro-border !important;
+    border-radius: 0 !important;
+    box-shadow: @retro-shadow-default !important;
+    background: @control-bg !important;
   }
 }

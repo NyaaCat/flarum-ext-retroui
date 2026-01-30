@@ -68,58 +68,67 @@ textarea.FormControl {
 // Flarum structure:
 // <label class="Checkbox Checkbox--switch [on|off]">
 //   <input type="checkbox">
-//   <div class="Checkbox-display"></div>  (uses :before for knob)
+//   <div class="Checkbox-display"></div>  (uses ::before for knob)
 //   text
 // </label>
 
-.Checkbox--switch {
+.Checkbox--switch,
+.Switch {
   // The track
-  .Checkbox-display {
-    width: 50px;
-    height: 28px;
-    border: @retro-border;
-    border-radius: 0;
-    background: @control-bg;
-    position: relative;
+  .Checkbox-display,
+  .Switch-display {
+    width: 50px !important;
+    height: 28px !important;
+    border: @retro-border !important;
+    border-radius: 0 !important;
+    background: @control-bg !important;
+    position: relative !important;
 
-    // Hide the icon inside
+    // Hide all icons and indicators inside
     .icon,
-    .LoadingIndicator {
-      display: none;
+    i,
+    svg,
+    .LoadingIndicator,
+    .fa,
+    [class*="fa-"] {
+      display: none !important;
+      visibility: hidden !important;
     }
 
-    // The toggle knob - Flarum uses :before
-    &:before {
-      content: '';
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      width: 18px;
-      height: 18px;
-      background: @muted-color;
-      border: @retro-border;
-      border-radius: 0;
-      transition: left @retro-transition, background @retro-transition;
+    // The toggle knob - use ::before
+    &::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 4px !important;
+      left: 4px !important;
+      width: 18px !important;
+      height: 18px !important;
+      background: @muted-color !important;
+      border: @retro-border !important;
+      border-radius: 0 !important;
+      transition: left @retro-transition, background @retro-transition !important;
     }
   }
 
   // ON state
-  &.on .Checkbox-display {
-    background: @primary-color;
+  &.on .Checkbox-display,
+  &.on .Switch-display {
+    background: @primary-color !important;
 
-    &:before {
-      left: 26px;
-      background: @control-bg;
+    &::before {
+      left: 26px !important;
+      background: @control-bg !important;
     }
   }
 
   // OFF state
-  &.off .Checkbox-display {
-    background: @control-bg;
+  &.off .Checkbox-display,
+  &.off .Switch-display {
+    background: @control-bg !important;
 
-    &:before {
-      left: 4px;
-      background: @muted-color;
+    &::before {
+      left: 4px !important;
+      background: @muted-color !important;
     }
   }
 
@@ -130,8 +139,10 @@ textarea.FormControl {
   }
 
   // Loading - show the indicator
-  &.loading .Checkbox-display .LoadingIndicator {
-    display: flex;
+  &.loading .Checkbox-display .LoadingIndicator,
+  &.loading .Switch-display .LoadingIndicator {
+    display: flex !important;
+    visibility: visible !important;
   }
 }
 

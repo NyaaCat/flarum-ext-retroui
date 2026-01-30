@@ -3,32 +3,34 @@
 .Composer {
   border: @retro-border;
   border-radius: 0;
-  box-shadow: none !important;
+  box-shadow: none;
   background: @control-bg;
 }
 
-// Composer header - contains minimize/fullscreen/close buttons
+// Composer header - minimize/fullscreen/close buttons should be flat
 .Composer-header {
   border-bottom: @retro-border-light;
+}
 
-  // Make all header buttons flat (minimize, fullscreen, close)
-  .Button {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent;
+// Window control buttons (minimize, fullscreen, close) - flat style
+// Flarum uses .Composer > .Button--icon for these controls
+.Composer > .Button.Button--icon,
+.Composer > .ButtonGroup > .Button.Button--icon,
+.Composer-header .Button.Button--icon,
+.Composer-header .itemControls .Button {
+  border: none;
+  box-shadow: none;
+  background: transparent;
 
-    &:hover {
-      background: fade(@primary-color, 15%);
-    }
+  &:hover,
+  &:focus {
+    background: fade(@primary-color, 15%);
+    box-shadow: none;
   }
 }
 
 // Composer body
 .Composer-body {
-  .TextEditor {
-    // Text editor container
-  }
-
   .TextEditor-editor {
     border: @retro-border-light;
     border-radius: 0;
@@ -41,50 +43,51 @@
   }
 }
 
-// Text editor toolbar
-.TextEditor-toolbar {
-  border-bottom: @retro-border-light;
+// Text editor toolbar - all buttons flat
+.Composer .TextEditor-toolbar .Button,
+.TextEditor-toolbar .Button {
+  border: none;
+  box-shadow: none;
+  background: transparent;
 
-  .Button {
-    border: none;
+  &:hover {
+    background: fade(@primary-color, 15%);
     box-shadow: none;
-    background: transparent;
-
-    &:hover {
-      background: fade(@primary-color, 15%);
-      box-shadow: none;
-    }
   }
 }
 
-// Composer controls (submit button area)
-.Composer-controls {
-  .Button {
-    border: @retro-border;
-    box-shadow: @retro-shadow-default;
+// Composer footer/submit area - buttons with border and shadow
+.Composer .ComposerBody-footer .Button,
+.ComposerBody-footer .Button {
+  border: @retro-border;
+  box-shadow: @retro-shadow-default;
 
-    &:hover {
-      box-shadow: @retro-shadow-hover;
-    }
+  &:hover {
+    box-shadow: @retro-shadow-hover;
+  }
 
-    &.Button--primary {
-      &:hover {
-        box-shadow: @retro-shadow-secondary;
-      }
-    }
+  &.Button--primary:hover {
+    box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%);
   }
 }
 
-// Full screen composer
-.Composer--fullScreen {
-  border: @retro-border;
-  box-shadow: none !important;
+// Icon buttons in footer remain flat
+.ComposerBody-footer .Button.Button--icon {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+
+  &:hover {
+    box-shadow: none;
+    background: fade(@primary-color, 15%);
+  }
 }
 
-// Minimized composer
-.Composer--minimized {
+// Full screen / minimized composer
+.Composer.Composer--fullScreen,
+.Composer.Composer--minimized {
   border: @retro-border;
-  box-shadow: none !important;
+  box-shadow: none;
 }
 
 // Reply preview

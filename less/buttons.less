@@ -16,10 +16,10 @@
     box-shadow: @retro-shadow-hover;
   }
 
-  // Primary button
+  // Primary button - use dark gray shadow since background is already colored
   &.Button--primary {
     &:hover {
-      box-shadow: @retro-shadow-secondary;
+      box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 50%);
     }
   }
 
