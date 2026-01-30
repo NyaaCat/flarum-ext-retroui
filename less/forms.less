@@ -19,354 +19,149 @@
   }
 }
 
-// Textarea
 textarea.FormControl {
   resize: vertical;
 }
 
-// Select dropdown (trigger button style)
-.Select {
-  .Select-input {
-    border: @retro-border;
-    border-radius: 0;
-    box-shadow: @retro-shadow-default;
-    transition: box-shadow @retro-transition;
+// Select dropdown
+.Select .Select-input {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-shadow-default;
+  transition: box-shadow @retro-transition;
 
-    &:hover {
-      box-shadow: @retro-shadow-hover;
-    }
+  &:hover {
+    box-shadow: @retro-shadow-hover;
   }
 }
 
 // ===========================================
-// RetroUI Switch / Toggle Styles
+// Checkbox - RetroUI Style
 // ===========================================
+// Flarum structure:
+// <label class="Checkbox [on|off]">
+//   <input type="checkbox">
+//   <div class="Checkbox-display"><icon></div>
+//   text
+// </label>
 
-// Flarum's Checkbox wrapper (used for both checkboxes and switches)
 .Checkbox {
-  position: relative;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  // Hide native checkbox
-  input[type="checkbox"],
-  input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  // Custom checkbox indicator
   .Checkbox-display {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
     border: @retro-border;
     border-radius: 0;
     background: @control-bg;
-    transition: background @retro-transition, border-color @retro-transition;
-    flex-shrink: 0;
-
-    // Checkmark icon
-    .icon {
-      opacity: 0;
-      transition: opacity @retro-transition;
-    }
   }
 
-  // Checked state
-  input:checked + .Checkbox-display,
-  &.checked .Checkbox-display {
+  &.on .Checkbox-display {
     background: @primary-color;
-    border-color: @text-color;
-
-    .icon {
-      opacity: 1;
-      color: @text-on-dark;
-    }
+    color: @text-on-dark;
   }
 
-  // Hover state
   &:hover .Checkbox-display {
     border-color: @primary-color;
   }
-
-  // Focus state
-  input:focus + .Checkbox-display {
-    border-color: @primary-color;
-    box-shadow: 0 0 0 2px fade(@primary-color, 30%);
-  }
-
-  // Disabled state
-  &.disabled,
-  input:disabled + .Checkbox-display {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
 }
 
 // ===========================================
-// RetroUI Toggle Switch
+// Switch - RetroUI Style
 // ===========================================
+// Flarum structure:
+// <label class="Checkbox Checkbox--switch [on|off]">
+//   <input type="checkbox">
+//   <div class="Checkbox-display"></div>  (uses :before for knob)
+//   text
+// </label>
 
-.Switch,
 .Checkbox--switch {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-
-  // Hide native input
-  input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  // Switch track
-  .Switch-display,
+  // The track
   .Checkbox-display {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    width: 44px;
-    height: 24px;
+    width: 50px;
+    height: 28px;
     border: @retro-border;
     border-radius: 0;
     background: @control-bg;
-    transition: background @retro-transition, border-color @retro-transition;
-    flex-shrink: 0;
-    padding: 2px;
+    position: relative;
 
-    // Switch thumb/knob
-    &::after {
-      content: '';
-      position: absolute;
-      left: 2px;
-      width: 16px;
-      height: 16px;
-      background: @primary-color;
-      border: @retro-border;
-      border-radius: 0;
-      transition: transform @retro-transition, background @retro-transition;
+    // Hide the icon inside
+    .icon,
+    .LoadingIndicator {
+      display: none;
     }
 
-    // Hide default icon
-    .icon {
-      display: none;
+    // The toggle knob - Flarum uses :before
+    &:before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 18px;
+      height: 18px;
+      background: @muted-color;
+      border: @retro-border;
+      border-radius: 0;
+      transition: left @retro-transition, background @retro-transition;
     }
   }
 
-  // Checked state - thumb slides right
-  input:checked + .Switch-display,
-  input:checked + .Checkbox-display,
-  &.checked .Switch-display,
-  &.checked .Checkbox-display {
+  // ON state
+  &.on .Checkbox-display {
     background: @primary-color;
 
-    &::after {
-      transform: translateX(20px);
+    &:before {
+      left: 26px;
       background: @control-bg;
     }
   }
 
-  // Hover state
-  &:hover .Switch-display,
-  &:hover .Checkbox-display {
-    border-color: @primary-color;
+  // OFF state
+  &.off .Checkbox-display {
+    background: @control-bg;
+
+    &:before {
+      left: 4px;
+      background: @muted-color;
+    }
   }
 
-  // Focus state
-  input:focus + .Switch-display,
-  input:focus + .Checkbox-display {
-    border-color: @primary-color;
-    box-shadow: 0 0 0 2px fade(@primary-color, 30%);
-  }
-
-  // Disabled state
-  &.disabled,
-  input:disabled + .Switch-display,
-  input:disabled + .Checkbox-display {
+  // Disabled
+  &.disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  // Loading - show the indicator
+  &.loading .Checkbox-display .LoadingIndicator {
+    display: flex;
   }
 }
 
 // ===========================================
-// Toggle Group / Button Group (segmented control)
+// Toggle Group
 // ===========================================
 
-.ToggleGroup,
-.ButtonGroup--toggle {
-  display: inline-flex;
+.ButtonGroup--toggle,
+.ToggleGroup {
   border: @retro-border;
   border-radius: 0;
 
-  .Button,
-  .ToggleGroup-button {
+  .Button {
     border: none;
+    border-right: @retro-border;
     border-radius: 0;
     box-shadow: none;
     background: @control-bg;
-    transition: background @retro-transition, color @retro-transition;
-    margin: 0;
 
-    // Separator between buttons
-    &:not(:last-child) {
-      border-right: @retro-border;
+    &:last-child {
+      border-right: none;
     }
 
     &:hover {
       background: fade(@primary-color, 15%);
-      box-shadow: none;
     }
 
-    // Active/selected state
-    &.active,
-    &[aria-pressed="true"],
-    &.selected {
+    &.active {
       background: @primary-color;
       color: @text-on-dark;
-
-      &:hover {
-        background: @primary-color;
-      }
     }
-  }
-}
-
-// ===========================================
-// Admin Settings Toggles
-// ===========================================
-
-// Flarum admin panel uses these for settings
-.SettingItem,
-.Form-group {
-  .Checkbox,
-  .Switch {
-    // Ensure consistent styling in admin panel
-  }
-}
-
-// Settings toggle in admin
-.SettingsPage,
-.AdminPage {
-  // Toggle switches in admin settings
-  .Checkbox {
-    input[type="checkbox"] + .Checkbox-display {
-      width: 44px;
-      height: 24px;
-
-      &::before {
-        display: none;
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 2px;
-        width: 16px;
-        height: 16px;
-        background: @muted-color;
-        border: @retro-border;
-        border-radius: 0;
-        transition: transform @retro-transition, background @retro-transition;
-      }
-
-      .icon {
-        display: none;
-      }
-    }
-
-    input[type="checkbox"]:checked + .Checkbox-display {
-      background: @primary-color;
-
-      &::after {
-        transform: translateX(20px);
-        background: @control-bg;
-      }
-    }
-  }
-}
-
-// ===========================================
-// Radio Button Group
-// ===========================================
-
-.RadioGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  .Radio {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    input[type="radio"] {
-      position: absolute;
-      opacity: 0;
-    }
-
-    .Radio-display {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      border: @retro-border;
-      border-radius: 0;
-      background: @control-bg;
-      margin-right: 8px;
-      flex-shrink: 0;
-
-      // Inner dot
-      &::after {
-        content: '';
-        width: 10px;
-        height: 10px;
-        background: transparent;
-        transition: background @retro-transition;
-      }
-    }
-
-    input:checked + .Radio-display::after {
-      background: @primary-color;
-    }
-
-    &:hover .Radio-display {
-      border-color: @primary-color;
-    }
-  }
-}
-
-// ===========================================
-// Inline Toggle (like on/off text labels)
-// ===========================================
-
-.Toggle {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 12px;
-  border: @retro-border;
-  border-radius: 0;
-  background: @control-bg;
-  cursor: pointer;
-  transition: background @retro-transition, color @retro-transition;
-  font-weight: 600;
-
-  &:hover {
-    background: fade(@primary-color, 15%);
-  }
-
-  &.active,
-  &[aria-pressed="true"] {
-    background: @primary-color;
-    color: @text-on-dark;
   }
 }
