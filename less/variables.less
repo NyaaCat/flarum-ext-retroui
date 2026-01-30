@@ -1,0 +1,22 @@
+// RetroUI Theme Variables
+// Based on Flarum's @primary-color and @secondary-color from admin config
+
+// === Core Design Parameters ===
+@retro-border-width: 2px;
+@retro-border-color: @text-color;
+@retro-border: @retro-border-width solid @retro-border-color;
+@retro-border-light: 1px solid fade(@text-color, 20%);
+
+@retro-shadow-offset: 4px;
+@retro-shadow-default: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 35%);
+@retro-shadow-hover: @retro-shadow-offset @retro-shadow-offset 0 0 @primary-color;
+@retro-shadow-secondary: @retro-shadow-offset @retro-shadow-offset 0 0 @secondary-color;
+@retro-shadow-large: 8px 8px 0 0 @text-color;
+
+@retro-inset-shadow: inset 2px 2px 0 0 fade(@text-color, 10%);
+@retro-inset-shadow-focus: inset 2px 2px 0 0 fade(@primary-color, 20%);
+
+@retro-transition: 0.2s ease;
+
+// === Override Flarum Defaults ===
+@border-radius: 0;
