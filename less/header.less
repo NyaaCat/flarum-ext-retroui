@@ -43,18 +43,32 @@
   }
 }
 
-// Search box - only bottom border by default
+// Search box - subtle thin line, no border when not focused
 .Search-input {
   border: none;
-  border-bottom: @retro-border-light;
+  border-bottom: 1px solid fade(@text-color, 15%);
   border-radius: 0;
   box-shadow: none;
-  transition: border-color @retro-transition;
+  background: transparent;
+  transition: border-color @retro-transition, background @retro-transition;
 
   &:focus {
-    border-bottom-color: @primary-color;
+    border-bottom: 2px solid @primary-color;
     box-shadow: none;
     outline: none;
+    background: fade(@control-bg, 50%);
+  }
+}
+
+// Search wrapper
+.Search {
+  .Search-input {
+    border: none;
+    border-bottom: 1px solid fade(@text-color, 15%);
+
+    &:focus {
+      border-bottom: 2px solid @primary-color;
+    }
   }
 }
 
