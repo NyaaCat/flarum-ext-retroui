@@ -1,0 +1,43 @@
+// Dropdown Menu Styles
+
+.Dropdown-menu {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-shadow-default;
+  background: @control-bg;
+  margin-top: 4px;
+}
+
+.Dropdown-item {
+  transition: background @retro-transition;
+
+  &:hover {
+    background: fade(@primary-color, 10%);
+  }
+
+  &.active {
+    background: fade(@primary-color, 15%);
+    font-weight: 600;
+  }
+}
+
+// Dropdown separator
+.Dropdown-separator {
+  border-top: @retro-border-light;
+}
+
+// User dropdown in header
+.SessionDropdown {
+  .Dropdown-menu {
+    border: @retro-border;
+    box-shadow: @retro-shadow-default;
+  }
+}
+
+// Notifications dropdown
+.NotificationsDropdown {
+  .Dropdown-menu {
+    border: @retro-border;
+    box-shadow: @retro-shadow-default;
+  }
+}
