@@ -1,0 +1,135 @@
+// ===========================================
+// RetroUI Tooltip
+// ===========================================
+// Replaces Flarum's default tooltips with RetroUI style
+
+// Tooltip container
+.Tooltip,
+.tooltip,
+[data-tooltip],
+[role="tooltip"] {
+  // Base tooltip styles applied via pseudo-elements or JS
+}
+
+// Tooltip content
+.Tooltip-content,
+.tooltip-content,
+.tippy-box,
+.tippy-content {
+  background: @control-bg !important;
+  color: @text-color !important;
+  border: @retro-border !important;
+  border-radius: 0 !important;
+  box-shadow: @retro-shadow-default !important;
+  padding: 6px 12px !important;
+  font-size: 12px;
+  font-weight: 500;
+  max-width: 250px;
+  z-index: @zindex-tooltip;
+
+  // Remove default arrow
+  .tippy-arrow,
+  .Tooltip-arrow,
+  &::before,
+  &::after {
+    display: none !important;
+  }
+}
+
+// Tippy.js specific overrides (Flarum uses tippy)
+.tippy-box {
+  background: @control-bg !important;
+  border: @retro-border !important;
+  border-radius: 0 !important;
+  box-shadow: @retro-shadow-default !important;
+
+  // Remove arrow
+  .tippy-arrow {
+    display: none !important;
+  }
+
+  // Content
+  .tippy-content {
+    padding: 6px 12px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+
+// Different tooltip placements - adjust shadow direction
+.tippy-box[data-placement^="top"] {
+  box-shadow: @retro-shadow-offset -@retro-shadow-offset 0 0 fade(@text-color, 35%) !important;
+}
+
+.tippy-box[data-placement^="bottom"] {
+  box-shadow: @retro-shadow-default !important;
+}
+
+.tippy-box[data-placement^="left"] {
+  box-shadow: -@retro-shadow-offset @retro-shadow-offset 0 0 fade(@text-color, 35%) !important;
+}
+
+.tippy-box[data-placement^="right"] {
+  box-shadow: @retro-shadow-default !important;
+}
+
+// Tooltip themes
+.tippy-box[data-theme~="light"] {
+  background: @control-bg !important;
+  color: @text-color !important;
+}
+
+.tippy-box[data-theme~="dark"] {
+  background: @text-color !important;
+  color: @control-bg !important;
+  border-color: @text-color !important;
+}
+
+// Tooltip animation
+.tippy-box[data-animation="fade"] {
+  &[data-state="hidden"] {
+    opacity: 0;
+  }
+  &[data-state="visible"] {
+    opacity: 1;
+  }
+}
+
+.tippy-box[data-animation="scale"] {
+  &[data-state="hidden"] {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  &[data-state="visible"] {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Title attribute tooltips (browser native - limited styling)
+[title] {
+  // Native tooltips can't be styled with CSS
+  // These are handled by tippy.js in Flarum
+}
+
+// Tooltip for buttons and icons
+.Button[title],
+.icon[title] {
+  // Ensure tippy picks these up
+}
+
+// hasTooltip class
+.hasTooltip {
+  cursor: help;
+}
+
+// Popover (similar to tooltip but larger)
+.Popover {
+  background: @control-bg;
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-shadow-default;
+  padding: 12px;
+  z-index: @zindex-tooltip;
+}

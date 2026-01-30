@@ -1,0 +1,213 @@
+// ===========================================
+// RetroUI Loader / Loading Indicator
+// ===========================================
+// Replaces Flarum's default spinner with bouncing squares
+
+// Keyframe animation for bouncing
+@keyframes retro-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+// Main loader container
+.LoadingIndicator,
+.loading-indicator,
+.Placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  // Hide default spinner
+  &::before,
+  &::after {
+    display: none !important;
+  }
+
+  // Remove any rotation animation from Flarum's default
+  animation: none !important;
+
+  // Create bouncing squares using pseudo-elements and children
+  .LoadingIndicator-block,
+  .spinner,
+  > span {
+    display: none;
+  }
+}
+
+// Bouncing squares loader
+.LoadingIndicator,
+.loading-indicator {
+  // Create 3 bouncing squares
+  &::before,
+  &::after {
+    content: '' !important;
+    display: block !important;
+    width: 12px;
+    height: 12px;
+    background: @primary-color;
+    border: @retro-border;
+    animation: retro-bounce 0.5s ease-in-out infinite;
+  }
+
+  &::before {
+    animation-delay: 0s;
+  }
+
+  &::after {
+    animation-delay: 0.1s;
+  }
+
+  // Add a third square via the element itself
+  width: 12px;
+  height: 12px;
+  background: @primary-color;
+  border: @retro-border;
+  animation: retro-bounce 0.5s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+// Alternative: Override with a simpler approach
+// Create a dedicated bouncing loader
+.LoadingIndicator {
+  position: relative;
+  width: auto;
+  height: auto;
+  min-width: 52px;
+  min-height: 12px;
+  background: transparent !important;
+  border: none !important;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    left: 20px;
+  }
+
+  // Third square positioned relatively
+  &:not(.LoadingIndicator--inline) {
+    &::after {
+      left: 40px;
+    }
+  }
+}
+
+// Small loader variant
+.LoadingIndicator--small,
+.LoadingIndicator--inline {
+  min-width: 36px;
+  min-height: 8px;
+  gap: 3px;
+
+  &::before,
+  &::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    left: 14px;
+  }
+}
+
+// Large loader variant
+.LoadingIndicator--large {
+  min-width: 68px;
+  min-height: 16px;
+
+  &::before,
+  &::after {
+    width: 16px;
+    height: 16px;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    left: 26px;
+  }
+}
+
+// Page loading overlay
+.App-loading {
+  .LoadingIndicator {
+    // Center the loader
+  }
+}
+
+// Discussion list loading
+.DiscussionList-loading {
+  padding: 20px;
+  text-align: center;
+}
+
+// Button loading state
+.Button.loading,
+.Button--loading {
+  position: relative;
+  color: transparent !important;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: @text-on-dark;
+    border: 1px solid @text-color;
+    animation: retro-bounce 0.5s ease-in-out infinite;
+  }
+}
+
+// Placeholder content loading
+.Placeholder {
+  background: fade(@muted-color, 20%);
+  border: @retro-border-light;
+  animation: none;
+
+  // Pulsing effect for placeholder
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      fade(@control-bg, 50%),
+      transparent
+    );
+    animation: retro-shimmer 1.5s infinite;
+  }
+}
+
+@keyframes retro-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

@@ -42,10 +42,17 @@
     box-shadow: @retro-shadow-default-dark;
   }
 
-  // Dropdowns
-  .Dropdown-menu {
+  // Dropdowns & Context Menus
+  .Dropdown-menu,
+  .ContextMenu,
+  .Select-dropdown {
     border-color: @retro-border-color-dark;
     box-shadow: @retro-shadow-default-dark;
+  }
+
+  .Dropdown-separator,
+  .ContextMenu-separator {
+    background: @retro-border-color-dark;
   }
 
   // Modals
@@ -123,5 +130,55 @@
   // Radio
   .RadioGroup .Radio .Radio-display {
     border-color: @retro-border-color-dark;
+  }
+
+  // ===========================================
+  // Loader - Dark Mode
+  // ===========================================
+
+  .LoadingIndicator,
+  .loading-indicator {
+    &::before,
+    &::after {
+      border-color: @retro-border-color-dark;
+    }
+  }
+
+  // ===========================================
+  // Tooltip - Dark Mode
+  // ===========================================
+
+  .tippy-box,
+  .Tooltip-content {
+    border-color: @retro-border-color-dark !important;
+    box-shadow: @retro-shadow-default-dark !important;
+  }
+
+  // ===========================================
+  // Select - Dark Mode
+  // ===========================================
+
+  .Select {
+    .Select-input {
+      border-color: @retro-border-color-dark;
+      box-shadow: @retro-shadow-default-dark;
+
+      &:hover {
+        box-shadow: @retro-shadow-hover;
+      }
+    }
+  }
+
+  // ===========================================
+  // Action Sheet - Dark Mode
+  // ===========================================
+
+  .ActionSheet {
+    border-color: @retro-border-color-dark;
+    box-shadow: @retro-shadow-large-dark;
+
+    .ActionSheet-item {
+      border-bottom-color: @retro-border-color-dark;
+    }
   }
 }
