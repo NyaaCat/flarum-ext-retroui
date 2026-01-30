@@ -1,0 +1,48 @@
+// Alert / Notification Styles
+
+.Alert {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-shadow-default;
+
+  // Success alert
+  &.Alert--success {
+    background: @alert-success-bg;
+    color: @alert-success-color;
+    border-color: @alert-success-color;
+    box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@alert-success-color, 50%);
+  }
+
+  // Error alert
+  &.Alert--error {
+    background: @alert-error-bg;
+    color: @alert-error-color;
+    border-color: @error-color;
+    box-shadow: @retro-shadow-offset @retro-shadow-offset 0 0 fade(@error-color, 50%);
+  }
+
+  // Info alert (default)
+  &.Alert--info {
+    background: @alert-bg;
+    color: @alert-color;
+  }
+}
+
+// Alert dismiss button
+.Alert-dismiss {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+
+  &:hover {
+    background: fade(@text-color, 10%);
+    box-shadow: none;
+  }
+}
+
+// Alerts container
+.AlertManager {
+  .Alert {
+    margin-bottom: 8px;
+  }
+}
