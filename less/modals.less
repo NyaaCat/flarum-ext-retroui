@@ -1,0 +1,68 @@
+// Modal / Dialog Styles
+
+// Modal backdrop
+.Modal-backdrop {
+  background: fade(#000, 50%);
+}
+
+// Modal container
+.Modal {
+  border: @retro-border;
+  border-radius: 0;
+  box-shadow: @retro-shadow-large;
+  background: @control-bg;
+}
+
+// Modal header
+.Modal-header {
+  border-bottom: @retro-border;
+  font-weight: 700;
+}
+
+// Modal body
+.Modal-body {
+  // Content area - no special styling needed
+}
+
+// Modal footer
+.Modal-footer {
+  border-top: @retro-border;
+}
+
+// Modal close button (flat icon style)
+.Modal-close {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+
+  &:hover {
+    background: fade(@primary-color, 15%);
+    box-shadow: none;
+  }
+}
+
+// Alert modal specific
+.Modal--alert {
+  .Modal-header {
+    font-weight: 700;
+  }
+}
+
+// Sign up / Log in modals
+.LogInModal,
+.SignUpModal {
+  .Modal {
+    border: @retro-border;
+    box-shadow: @retro-shadow-large;
+  }
+
+  .FormControl {
+    border: @retro-border;
+    box-shadow: @retro-inset-shadow;
+
+    &:focus {
+      border-color: @primary-color;
+      box-shadow: @retro-inset-shadow-focus;
+    }
+  }
+}
